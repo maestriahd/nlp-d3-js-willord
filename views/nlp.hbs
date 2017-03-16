@@ -1,0 +1,28 @@
+<h1>NLP</h1>
+
+<!-- presenta la lista de sustantivos -->
+<h1>Sustantivos [{{nouns.length}}]</h1>
+<ul>
+  {{#each nouns.list}}
+  <li>
+    {{#each this.terms}}
+      {{this.text}}
+    {{/each}}
+  </li>
+  {{/each}}
+</ul>
+
+<!-- presenta la lista de personas -->
+<h1>Personas [{{people.length}}]</h1>
+<ul>
+  {{#each people.list}}
+  <li>
+    {{#each this.terms}}
+      {{this.text}}
+    {{/each}}
+  </li>
+  {{/each}}
+</ul>
+
+<h1>Texto original</h1>
+{{txt}}
