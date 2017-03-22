@@ -37,6 +37,10 @@ hbs.registerHelper('ifeq', function(a,b,opts){
     return opts.fn(this);
   }
 });
+// {{json}}
+hbs.registerHelper('json', function(context) {
+    return JSON.stringify(context);
+});
 
 
 // configuraciones adicionales
