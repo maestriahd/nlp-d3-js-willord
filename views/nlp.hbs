@@ -1,4 +1,4 @@
-<h1>NLP</h1>
+<h1>Principios de Interpretación Bíblica</h1>
 
 
 <!-- div donde se inyectará la visualizción de D3js -->
@@ -20,8 +20,8 @@
     // selecciona la división donde se inyectará el SVG
     var svg = d3.select('#viz')
       .append('svg') // agrega un elemento SVG
-      .attr('width', 400) // al SVG le agrega el atributo ancho de 400px
-      .attr('height', 200) // al SVG le agrega el atributo alto de 200px
+      .attr('width', 500) // al SVG le agrega el atributo ancho de 400px
+      .attr('height', 300) // al SVG le agrega el atributo alto de 200px
 
     var elem = svg.selectAll('g') // selecciona todos los elementos `g` (grupos)
       .data(data) // enlaza los datos
@@ -29,7 +29,7 @@
     var elemEnter = elem.enter()
         .append('g') // agrega un grupo
         .attr('transform', function(d,i){ // aplica una transformación al elemento
-          return "translate("+(80*i+40)+", 80)" // calcula la posción relativo a
+          return "translate("+(200*i+50)+", 150)" // calcula la posción relativo a
                                                 // los datos
         })
 
@@ -37,7 +37,7 @@
       .attr('stroke', 'black') // la línea de contorno será negra
       .attr('fill', function(d){ // el color de relleno se aplica según el
                                  // resultado de esta función
-        if(d.name === 'sustantivos'){     // si el elemento actual es el sustantivo
+        if(d.name === 'Lugares'){     // si el elemento actual es el sustantivo
           return 'green'  // el color de relleno será verde
         } else {          // de lo contrario
           return 'red'    // el color de relleno será rojo
@@ -45,7 +45,7 @@
       })
 
       .attr('r', function(d){ // el radio dependerá de los items en el array
-        return map(d.count, 0, 3863, 10, 50)
+        return map(d.count, 0, 5558, 10, 100)
       })
 
     // crea los textos etiquetando cada uno de los círculos
@@ -65,12 +65,12 @@
 
   var data = [
     {
-      count: {{nouns.length}},
-      name: 'sustantivos'
+      count: {{places.length}},
+      name: 'Lugares'
     },
     {
-      count: {{people.length}},
-      name: 'Personas'
+      count: {{verbs.length}},
+      name: 'verbos'
     }
   ]
   viz(data)
@@ -79,6 +79,7 @@
 
 
 <!-- presenta la lista de sustantivos -->
+<!--
 <h1>Sustantivos [{{nouns.length}}]</h1>
 <ul>
   {{#each nouns.list}}
@@ -87,16 +88,28 @@
   </li>
   {{/each}}
 </ul>
-
+-->
 <!-- presenta la lista de personas -->
-<h1>Personas [{{people.length}}]</h1>
+
+
+<h1>Lugares [{{places.length}}]</h1>
 <ul>
-  {{#each people.list}}
+  {{#each places.list}}
   <li>
       {{this}}
   </li>
   {{/each}}
 </ul>
 
-<h1>Texto original</h1>
+<h1>Verbos [{{verbs.length}}]</h1>
+<ul>
+  {{#each verbs.list}}
+  <li>
+      {{this}}
+  </li>
+  {{/each}}
+</ul>
+
+
+<h1>Principios de Interpretación Bíblica - Berkhof</h1>
 {{txt}}

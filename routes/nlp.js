@@ -10,7 +10,7 @@ const fs = require('fs');
 /* GET home page. */
 router.get('/', function(req, res) {
   // obtiene un texto aleatorio de discursos presidenciales
-  var txt = fs.readFileSync(__dirname+'/manifesto.txt', "utf8");
+  var txt = fs.readFileSync(__dirname+'/Principles of Biblical Interpretation.txt', "utf8");
   // var txt = corpus.sotu.random();
 
   // entrega el texto al motor de NLP
@@ -24,7 +24,11 @@ router.get('/', function(req, res) {
 
   // extrae los sustantivos
   var nouns = r.nouns();
+  var places = r.places();
+  var verbs = r.verbs();
 
+
+console.log(places)
   // hace el render de la vista entregando el texto, la lista de personas
   // y sustantivos
   res.render('nlp', {
@@ -36,7 +40,16 @@ router.get('/', function(req, res) {
     nouns: {
       list: nouns.out('array'),
       length: nouns.list.length
+    },
+    places: {
+      list: places.out('array'),
+      length: places.list.length
+    },
+    verbs: {
+      list: verbs.out('array'),
+      length: verbs.list.length
     }
+
     });
 });
 
